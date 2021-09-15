@@ -122,26 +122,28 @@
             }
             const witNumber=parseFloat(witMony);
 
-
-            const Balance=document.getElementById("display_balance").innerText;
-            const balanceNumber=parseFloat(Balance);
-            
-            if(witNumber>balanceNumber)
+            if(witNumber>0)
             {
-                const noBalance=document.getElementById("not_enoth_balance");
+                const Balance=document.getElementById("display_balance").innerText;
+                const balanceNumber=parseFloat(Balance);
+                
+                if(witNumber>balanceNumber)
+                {
+                    const noBalance=document.getElementById("not_enoth_balance");
 
-                const account = document.getElementById("account_section");
-                account.style.display="none"
-                noBalance.style.display="block";
-            }
-            else
-            {
-                const dispay_withdraw=currentNumber+witNumber;
-                const display_balance=balanceNumber-witNumber;
+                    const account = document.getElementById("account_section");
+                    account.style.display="none"
+                    noBalance.style.display="block";
+                }
+                else
+                {
+                    const dispay_withdraw=currentNumber+witNumber;
+                    const display_balance=balanceNumber-witNumber;
 
-                document.getElementById("display_balance").innerText=display_balance;
+                    document.getElementById("display_balance").innerText=display_balance;
 
-                document.getElementById("display_withdraw").innerText=dispay_withdraw;
+                    document.getElementById("display_withdraw").innerText=dispay_withdraw;
+                }
             }
 
             document.getElementById("mony_withdraw").value="";
