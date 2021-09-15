@@ -35,7 +35,7 @@
     border-radius: 10px;
     box-shadow: 10px 10px 15px gray;
 }
-.diposite, .withdraw
+.deposit, .withdraw
 {
     margin: 10px;
     padding: 10px 40px;
@@ -43,7 +43,7 @@
     border-radius: 10px;
     box-shadow: 10px 10px 20px gray;
 }
-.diposite button, .withdraw button
+.deposit button, .withdraw button
 {
     margin-top: 10px;
 }
@@ -51,7 +51,7 @@
 {
     margin: 50px 0px;
 }
-#not_enoth_balance
+#not_enough_balance
 {
     margin: 100px;
     padding-top: 10px;
