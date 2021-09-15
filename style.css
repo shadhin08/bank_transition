@@ -37,6 +37,7 @@
 }
 .diposite, .withdraw
 {
+    margin: 10px;
     padding: 10px 40px;
     text-align: center;
     border-radius: 10px;
