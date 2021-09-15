@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login_section">
+        <h2 class="text-center">Welcome To SH bank</h2>
+        <br>
+        <div class="login">
+            <input type="email" class="form-control" placeholder="Email">
+            <br>
+            <input type="password" class="form-control" placeholder="Password">
+            <br>
+            <button id="butt" class="btn btn-success" type="submit">Enter</button>
+        </div>
+    </div>
+    <div class="container" id="account_section">
+        <div class="row">
+          <div class="col-md-4">
+              <div class="dip">
+                <h2>Diposite</h2>
+                <h4>$ <span id="display_diposite">00</span> </h4>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="wit">
+                <h2>Withdraw</h2>
+                <h4>$ <span id="display_withdraw">00</span> </h4>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bal">
+                <h2>Balance</h2>
+                <h4>$ <span id="display_balance">00</span> </h4>
+            </div>
+          </div>
+        </div>
+        <div class="transition">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="diposite">
+                        <h2>Diposite</h2>
+                        <input id="mony_diposite" class="form-control" type="number" placeholder="$ amount you want to diposite">
+                        <br>
+                        <button id="click_diposite" class="btn btn-success">Diposite</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="withdraw">
+                        <h2> Withdraw</h2>
+                        <input id="mony_withdraw" class="form-control" type="number" placeholder="$ amount you want to withdraw">
+                        <br>
+                        <button id="click_withdraw" class="btn btn-success">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div id="not_enoth_balance">
+          <div class="container-fluid">
+              <div class="minus_balance">
+                <h3>Oooops!...</h3>
+                <h5>You don't have enoth balance.</h5>
+              </div>
+              <button id="no_balance_btn" class="btn btn-danger">Ok</button>
+          </div>
+      </div>
+
+    
+    <script>
+        const enter = document.getElementById("butt");
+        enter.addEventListener("click", function()
+        {
+            const login=document.getElementById("login_section");
+            login.style.display="none";
+            const account = document.getElementById("account_section");
+            account.style.display="block"
+
+        })
+
+        const dipositeBtn=document.getElementById("click_diposite");
+        dipositeBtn.addEventListener("click", function()
+        {
+            const currentMony=document.getElementById("display_diposite").innerText;
+            const currentNumber=parseFloat(currentMony);
+
+            const dipMony = document.getElementById("mony_diposite").value;
+            const dipNumber=parseFloat(dipMony);
+
+            const dispay_diposite=currentNumber+dipNumber;
+            if(dispay_diposite>0)
+            {
+                document.getElementById("display_diposite").innerText=dispay_diposite;
+            }
+
+            const Balance=document.getElementById("display_balance").innerText;
+            const balanceNumber=parseFloat(Balance);
+            const display_balance=balanceNumber+dipNumber;
+            if(display_balance>=0)
+            {
+                document.getElementById("display_balance").innerText=display_balance;
+            }
+            document.getElementById("mony_diposite").value="";
+        })
+
+        const withdrawBtn=document.getElementById("click_withdraw");
+        withdrawBtn.addEventListener("click", function()
+        {
+            const currentMony=document.getElementById("display_withdraw").innerText;
+            const currentNumber=parseFloat(currentMony);
+
+            const witMony = document.getElementById("mony_withdraw").value;
+            const witNumber=parseFloat(witMony);
+
+            const dispay_withdraw=currentNumber+witNumber;
+
+            const Balance=document.getElementById("display_balance").innerText;
+            const balanceNumber=parseFloat(Balance);
+            const display_balance=balanceNumber-witNumber;
+            
+            if(display_balance<0)
+            {
+                const noBalance=document.getElementById("not_enoth_balance");
+
+                const account = document.getElementById("account_section");
+                account.style.display="none"
+                noBalance.style.display="block";
+            }
+            else
+            {
+                document.getElementById("display_balance").innerText=display_balance;
+
+                document.getElementById("display_withdraw").innerText=dispay_withdraw;
+            }
+
+            document.getElementById("mony_withdraw").value="";
+        })
+        const noBOk=document.getElementById("no_balance_btn");
+        noBOk.addEventListener("click", function()
+        {
+            const sec1=document.getElementById("account_section");
+            const sec2=document.getElementById("not_enoth_balance");
+
+            sec2.style.display="none";
+            sec1.style.display="block";
+        })
+    </script>
+</body>
+</html>
